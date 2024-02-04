@@ -11,12 +11,16 @@ class Solution:
         min_window_str = ""
         required_chars = len(t)
         
+        # right 포인터가 문자열 s의 끝에 도달할 때까지 아래의 과정을 반복합니다.
         while right < len(s):
             # 현재 문자를 윈도우에 추가
+            # 현재 right가 가리키는 문자가 t에 속한다면, 해당 문자의 등장 횟수를 감소시키고, 
+            # 필요한 문자의 수도 갱신합니다.
             if s[right] in t_count:
                 t_count[s[right]] -= 1
                 if t_count[s[right]] >= 0:
                     required_chars -= 1
+                    
             # 모든 문자가 포함된 경우
             while required_chars == 0:
                 # 최소 윈도우 갱신
@@ -32,5 +36,4 @@ class Solution:
             # right를 이동하여 윈도우 확장
             right += 1
         return min_window_str
-        
         
